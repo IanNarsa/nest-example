@@ -1,0 +1,44 @@
+-- public.w_products definition
+-- Drop table
+-- DROP TABLE public.w_products;
+CREATE TABLE public.w_products (
+	id bigserial NOT NULL,
+	product_name varchar NULL,
+	product_category varchar NULL
+);
+
+
+-- public.w_user definition
+-- Drop table
+-- DROP TABLE public.w_user;
+CREATE TABLE public.w_user (
+	id_user bigserial NOT NULL,
+	username varchar NULL,
+	user_type varchar NULL,
+	full_name varchar NULL,
+	created_at timestamptz NULL,
+	CONSTRAINT username UNIQUE (username),
+	CONSTRAINT w_user_pkey PRIMARY KEY (id_user)
+);
+
+
+-- public.w_user_roles definition
+-- Drop table
+-- DROP TABLE public.w_user_roles;
+CREATE TABLE public.w_user_roles (
+	id bigserial NOT NULL,
+	role_name varchar NULL
+);
+
+
+-- public.w_warranty_claim definition
+-- Drop table
+-- DROP TABLE public.w_warranty_claim;
+CREATE TABLE public.w_warranty_claim (
+	id int8 NOT NULL DEFAULT nextval('w_list_warranty_claim_id_seq'::regclass),
+	product_id int4 NULL,
+	user_id int4 NULL,
+	status varchar NULL,
+	created_at timestamptz NULL,
+	updated_at timestamptz NULL
+);
